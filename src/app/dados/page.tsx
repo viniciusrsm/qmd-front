@@ -7,7 +7,7 @@ export default function Dados() {
     return (
         <>
             <PageIndicator />
-            <div className="flex md:flex-row flex-col justify-center gap-4 mt-4 px-10">
+            <div className="flex lg:flex-row flex-col justify-center gap-4 mt-4 px-10">
                 <CardDevedores />
                 <CardDevedores />
             </div>
