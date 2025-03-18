@@ -1,6 +1,7 @@
 'use client'
 import { Divida } from "@/interfaces/interfaces";
 import { useState } from "react";
+import ButtonPrimary from "../components/ButtonPrimary";
 import ModalDivida from "./ModalDivida";
 
 export default function CardDevedores() {
@@ -66,6 +67,9 @@ export default function CardDevedores() {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="flex justify-center">
+                <ButtonPrimary text="Nova dívida" style="" />
             </div>
             <ModalDivida open={modalOpen} handleClose={() => setModalOpen(false)} divida={selectedDivida!} />
         </div>
