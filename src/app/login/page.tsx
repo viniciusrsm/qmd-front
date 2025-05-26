@@ -1,13 +1,13 @@
 'use client';
 
 import { useActionState, useState } from 'react';
+import { signup } from '@/app/actions/auth';
 
 export default function Login() {
-    //const { login } = useAuth();
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    //const [state, action, pending] = useActionState(signup, undefined)
+    const [state, action, pending] = useActionState(signup, undefined)
 
 
 
@@ -42,7 +42,7 @@ export default function Login() {
                             className="w-full px-3 py-2 rounded bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white"
                         />
                     </div>
-                    {/* state?.errors?.email && <p>{state.errors.email}</p> */}
+                    {state?.errors?.email && <p>{state.errors.email}</p>}
                     <div className="space-y-2">
                         <label htmlFor="password" className="block text-sm">Senha</label>
                         <input 
@@ -53,7 +53,7 @@ export default function Login() {
                             className="w-full px-3 py-2 rounded bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white"
                         />
                     </div>
-                    {/* state?.errors?.password && <p>{state.errors.password}</p> */}
+                    {state?.errors?.password && <p>{state.errors.password}</p>}
                     
                     {isSignUp && (
                         <div className="space-y-2">

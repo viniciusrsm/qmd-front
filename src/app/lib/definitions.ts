@@ -1,5 +1,6 @@
 import { z } from 'zod'
- 
+import { User } from '@/types/auth.types'
+
 export const SignupFormSchema = z.object({
   email: z.string().email({ message: 'Insira um e-mail válido' }).trim(),
   password: z
@@ -18,3 +19,7 @@ export type FormState =
     }
   | undefined
 
+export type SessionPayload = {
+  userId: string;
+  expiresAt: Date;
+}
