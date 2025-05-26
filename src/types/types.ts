@@ -1,4 +1,4 @@
-export interface Divida {
+export type Divida = {
     devedor: string;
     quantidade: number;
 }

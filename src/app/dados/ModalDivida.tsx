@@ -1,8 +1,8 @@
-import { Divida } from '@/interfaces/interfaces';
+import { Divida } from '@/types/types';
 import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
-import ButtonPrimary from '../components/ButtonPrimary';
-import ButtonSecondary from '../components/ButtonSecondary';
+import ButtonPrimary from '../../components/ButtonPrimary';
+import ButtonSecondary from '../../components/ButtonSecondary';
 
 interface ModalDevedoresProps {
   open: boolean;

@@ -1,4 +1,4 @@
-import PageIndicator from "../components/PageIndicator";
+import PageIndicator from "../../components/PageIndicator";
 import CardDevedores from "./CardDevedores";
 
 export default function Dados() {

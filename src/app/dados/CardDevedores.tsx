@@ -1,8 +1,8 @@
 'use client'
-import { Divida } from "@/interfaces/interfaces";
+import { Divida } from "@/types/types";
 import { useState } from "react";
-import ButtonPrimary from "../components/ButtonPrimary";
 import ModalDivida from "./ModalDivida";
+import { Button } from "@/components/ui/button";
 
 export default function CardDevedores() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -69,7 +69,7 @@ export default function CardDevedores() {
                 </table>
             </div>
             <div className="flex justify-center">
-                <ButtonPrimary text="Nova dívida" style="" />
+                <Button variant={"default"}>Nova dívida</Button>
             </div>
             <ModalDivida open={modalOpen} handleClose={() => setModalOpen(false)} divida={selectedDivida!} />
         </div>
