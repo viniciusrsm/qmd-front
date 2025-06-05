@@ -1,8 +1,7 @@
+import { Button } from '@/components/ui/button';
 import { Divida } from '@/types/types';
 import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
-import ButtonPrimary from '../../components/ButtonPrimary';
-import ButtonSecondary from '../../components/ButtonSecondary';
 
 interface ModalDevedoresProps {
   open: boolean;
@@ -39,8 +38,8 @@ export default function ModalDivida({ open, handleClose, divida }: ModalDevedore
                 <p className='font-bold mt-6'>Devedor:</p>
                 <p className='truncate'>{divida?.devedor}</p>
                 <div className='gap-2 flex justify-center'>
-                    <ButtonPrimary text={isEditing ? 'Confirmar' : 'Editar'} onClick={editDivida}/>
-                    <ButtonSecondary text={isEditing ? 'Cancelar' : 'Excluir'} onClick={deleteDivida}/>
+                    <Button onClick={editDivida}>{isEditing ? 'Confirmar' : 'Editar'}</Button>
+                    <Button onClick={deleteDivida}>{isEditing ? 'Cancelar' : 'Excluir'}</Button>
                 </div>
             </div>
         </Dialog>

@@ -1,15 +1,11 @@
 'use client';
 
-import { useActionState, useState } from 'react';
 import { signup } from '@/app/actions/auth';
+import { useActionState, useState } from 'react';
 
 export default function Login() {
     const [isSignUp, setIsSignUp] = useState(false);
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const [state, action, pending] = useActionState(signup, undefined)
-
-
 
     return (
         <div className="flex justify-center items-center h-full">
@@ -31,7 +27,7 @@ export default function Login() {
                         Cadastro
                     </button>
                 </div>
-                <form noValidate onSubmit={(e) => e.preventDefault()} action={''} className="space-y-4">
+                <form noValidate action={action} className="space-y-4">
                     <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm">Email</label>
                         <input
@@ -67,20 +63,13 @@ export default function Login() {
                             />
                         </div>
                     )}
-                    {error && (
-                        <p className="text-red-300 text-sm text-center">{error}</p>
-                    )}
+                    {state?.errors?.confirmPassword && <p>{state.errors.confirmPassword}</p>}
                     <button 
                         type="submit" 
-                        disabled={isLoading}
+                        disabled={pending}
                         className="w-full py-2 mt-6 bg-white text-primary rounded-lg font-medium hover:bg-white/90 transition-colors disabled:opacity-50"
                     >
-                        {isLoading 
-                            ? 'Carregando...' 
-                            : isSignUp 
-                                ? 'Criar Conta' 
-                                : 'Entrar'
-                        }
+                        {isSignUp  ? 'Criar Conta' : 'Entrar'}    
                     </button>
                 </form>
 

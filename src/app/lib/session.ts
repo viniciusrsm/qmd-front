@@ -1,7 +1,6 @@
-import 'server-only'
+import { decrypt, encrypt } from '@/app/lib/encryption'
 import { cookies } from 'next/headers'
-import { SessionPayload } from '@/app/lib/definitions'
-import { encrypt, decrypt } from '@/app/lib/encryption'
+import 'server-only'
 
 export async function createSession(userId: string) {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
@@ -15,6 +14,8 @@ export async function createSession(userId: string) {
     sameSite: 'lax',
     path: '/',
   })
+
+  console.log('Session created for user:', userId)
 }
 
 export async function updateSession() {
