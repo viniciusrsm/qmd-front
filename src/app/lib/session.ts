@@ -2,7 +2,7 @@ import { decrypt, encrypt } from '@/app/lib/encryption'
 import { cookies } from 'next/headers'
 import 'server-only'
 
-export async function createSession(userId: string) {
+export const createSession = async (userId: string) => {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
   const session = await encrypt({ userId, expiresAt })
   const cookieStore = await cookies()
@@ -18,7 +18,7 @@ export async function createSession(userId: string) {
   console.log('Session created for user:', userId)
 }
 
-export async function updateSession() {
+export const updateSession = async () => {
   const session = (await cookies()).get('session')?.value
   const payload = await decrypt(session)
  
@@ -38,7 +38,7 @@ export async function updateSession() {
   })
 }
 
-export async function deleteSession() {
+export const deleteSession = async () => {
   const cookieStore = await cookies()
   cookieStore.delete('session')
 }

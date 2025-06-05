@@ -4,7 +4,7 @@ import { SessionPayload } from './definitions'
 const secretKey = process.env.SESSION_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
 
-export async function encrypt(payload: SessionPayload) {
+export const encrypt = (payload: SessionPayload) => {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
@@ -12,7 +12,7 @@ export async function encrypt(payload: SessionPayload) {
     .sign(encodedKey)
 }
 
-export async function decrypt(token: string | undefined = '') {
+export const decrypt = async (token: string | undefined = '') => {
   try {
     const { payload } = await jwtVerify(token, encodedKey, {
       algorithms: ['HS256'],

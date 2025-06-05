@@ -1,7 +1,6 @@
 'use client';
 
 import Image from "next/image";
-import { useAuth } from "@/context/auth.context";
 
 export default function Navbar() {
   //const { user, logout } = useAuth();

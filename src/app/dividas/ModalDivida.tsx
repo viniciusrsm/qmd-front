@@ -1,23 +1,23 @@
 import { Button } from '@/components/ui/button';
-import { Divida } from '@/types/types';
+import { Debt } from '@/types/types';
 import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
 
-interface ModalDevedoresProps {
+interface ModalDebtorsProps {
   open: boolean;
   handleClose: () => void;
-  divida: Divida | null;
+  divida: Debt | null;
 }
 
-export default function ModalDivida({ open, handleClose, divida }: ModalDevedoresProps) {
+export default function ModalDebt({ open, handleClose, divida }: ModalDebtorsProps) {
     const [isEditing, setIsEditing] = useState(false);
-    const [editedQuantidade, setEditedQuantidade] = useState(divida?.quantidade || '');
+    const [editedValue, setEditedValue] = useState(divida?.value || '');
 
-    const editDivida = () => {
+    const editDebt = () => {
         setIsEditing(!isEditing);
     };
 
-    const deleteDivida = () => {
+    const deleteDebt = () => {
         // Delete divida
     };
 
@@ -28,18 +28,18 @@ export default function ModalDivida({ open, handleClose, divida }: ModalDevedore
                 {isEditing ? (
                     <input
                         type="text"
-                        value={editedQuantidade}
-                        onChange={(e) => setEditedQuantidade(e.target.value)}
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
                         className="text-center font-bold text-2xl text-primary border rounded p-1 w-full"
                     />
                 ) : (
-                    <p className='text-center font-bold text-2xl text-primary'>{divida?.quantidade} R$</p>
+                    <p className='text-center font-bold text-2xl text-primary'>{divida?.value} R$</p>
                 )}
                 <p className='font-bold mt-6'>Devedor:</p>
-                <p className='truncate'>{divida?.devedor}</p>
+                <p className='truncate'>{divida?.debtorName}</p>
                 <div className='gap-2 flex justify-center'>
-                    <Button onClick={editDivida}>{isEditing ? 'Confirmar' : 'Editar'}</Button>
-                    <Button onClick={deleteDivida}>{isEditing ? 'Cancelar' : 'Excluir'}</Button>
+                    <Button onClick={editDebt}>{isEditing ? 'Confirmar' : 'Editar'}</Button>
+                    <Button onClick={deleteDebt}>{isEditing ? 'Cancelar' : 'Excluir'}</Button>
                 </div>
             </div>
         </Dialog>

@@ -1,46 +1,48 @@
 'use client'
-import { Divida } from "@/types/types";
-import { useState } from "react";
-import ModalDivida from "./ModalDivida";
 import { Button } from "@/components/ui/button";
+import { Debt } from "@/types/types";
+import { useState } from "react";
+import ModalDebt from "./ModalDivida";
 
-export default function CardDevedores() {
+interface CardDebtorsProps {
+    title?: string;
+}
+
+export default function CardDebtors({ title = "Dívidas desse mês" }: CardDebtorsProps) {
     const [modalOpen, setModalOpen] = useState(false);
-    const [selectedDivida, setSelectedDivida] = useState<Divida | null>(null);
+    const [selectedDivida, setSelectedDivida] = useState<Debt | null>(null);
 
-    const devedores: Divida[] = [
-        { devedor: 'João Silva dahwhd awd  awgv dagvdwg ahwdbhawb aw dvagwvd adg avwgdv adav dgvwg', quantidade: 10000.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 100000000000.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 200.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 200.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 200.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 200.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
-        { devedor: 'João Silva', quantidade: 200.51 },
-        { devedor: 'Maria Souza', quantidade: 1 },
-        { devedor: 'Carlos Ferreira', quantidade: 3 },
+    const debtors: Debt[] = [
+        { debtorName: 'João Silva dahwhd awd  awgv dagvdwg ahwdbhawb aw dvagwvd adg avwgdv adav dgvwg', value: 10000.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 100000000000.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 200.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 200.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 200.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 200.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
+        { debtorName: 'João Silva', value: 200.51 },
+        { debtorName: 'Maria Souza', value: 1 },
+        { debtorName: 'Carlos Ferreira', value: 3 },
     ];
 
-    const openModalDivida = (divida: Divida) => {
+    const openModalDivida = (divida: Debt) => {
         setModalOpen(true);
         setSelectedDivida(divida);
-    };
-
-    return (
+    };    return (
         <div className="bg-white rounded-lg shadow-lg p-4 w-full">
             <div className="text-lg font-bold">
-                Dívidas desse mês
+                {title}
             </div>
             <div className="mt-4 overflow-y-auto max-h-48">
                 <table className="min-w-full overflow-scroll table-auto border-collapse">
@@ -55,13 +57,13 @@ export default function CardDevedores() {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {devedores.map((divida, index) => (
+                        {debtors.map((divida, index) => (
                             <tr key={index} onClick={() => openModalDivida(divida)} className="hover:bg-gray-50 cursor-pointer">
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 max-w-xs overflow-hidden overflow-ellipsis">
-                                    {divida.devedor}
+                                    {divida.debtorName}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
-                                    {divida.quantidade}
+                                    {divida.value}
                                 </td>
                             </tr>
                         ))}
@@ -71,7 +73,7 @@ export default function CardDevedores() {
             <div className="flex justify-center">
                 <Button variant={"default"}>Nova dívida</Button>
             </div>
-            <ModalDivida open={modalOpen} handleClose={() => setModalOpen(false)} divida={selectedDivida!} />
+            <ModalDebt open={modalOpen} handleClose={() => setModalOpen(false)} divida={selectedDivida!} />
         </div>
     )
 }

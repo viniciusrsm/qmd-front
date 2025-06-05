@@ -72,19 +72,6 @@ export default function Login() {
                         {isSignUp  ? 'Criar Conta' : 'Entrar'}    
                     </button>
                 </form>
-
-                {/* <div className="flex flex-col items-center mt-4">
-                    <button 
-                        onClick={handleGoogleLogin}
-                        disabled={isLoading}
-                        className="cursor-pointer min-w-12 min-h-12 bg-white text-primary rounded-full flex items-center justify-center disabled:opacity-50"
-                    >
-                        <GoogleIcon />
-                    </button>
-                    {error && (
-                        <p className="mt-4 text-red-200 text-center">{error}</p>
-                    )}
-                </div> */}
             </div>
         </div>
     );
